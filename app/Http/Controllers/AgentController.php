@@ -30,7 +30,7 @@ class AgentController extends Controller
         $agent->manager = $request->input('manager');
         $agent->status = $request->input('status');
         $agent->save();
-        return redirect()->route('index');
+        return redirect()->route('index')->with('success','Thêm mới thành công ');
     }
 
     public function edit($id)
@@ -50,14 +50,14 @@ class AgentController extends Controller
         $agent->manager = $request->input('manager');
         $agent->status = $request->input('status');
         $agent->save();
-        return redirect()->route('index');
+        return redirect()->route('index')->with('success','Cập nhật thành công ');
     }
 
     public function destroy($id)
     {
         $agent = Agents::findOrFail($id);
         $agent->delete();
-        return redirect()->route('index');
+        return redirect()->route('index')->with('success','Xoá thành công ');
     }
 
     public function search(Request $request)
